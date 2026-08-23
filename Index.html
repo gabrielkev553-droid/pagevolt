@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PageVolt — Waitlist</title>
+  <style>
+    :root {
+      --bg: #030712;
+      --violet: #8b5cf6;
+      --cyan: #06b6d4;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --card: rgba(17, 24, 42, 0.75);
+      --border: rgba(139, 92, 246, 0.3);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      backdrop-filter: blur(10px);
+      background: rgba(3, 7, 18, 0.6);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 3rem;
+      position: relative;
+    }
+    .shield-pulse {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2rem;
+      background: radial-gradient(circle at 30% 30%, var(--cyan), transparent 70%);
+      border-radius: 50%;
+      animation: pulse 3s infinite ease-in-out;
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 0.9; }
+      100% { transform: scale(0.9); opacity: 0.7; }
+    }
+    .launch-chip {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+      animation: bounce 3s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .hero-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fade 4s infinite linear;
+    }
+    @keyframes fade {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+    .waitlist-card {
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
+      backdrop-filter: blur(10px);
+    }
+    .waitlist-card iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 0.5rem;
+    }
+    .social-proof {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .green-dot {
+      width: 10px;
+      height: 10px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+      animation: blink 1.5s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1.5rem 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .step-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .step-card:hover {
+      transform: translateY(-8px);
+    }
+    .step-number {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      border-radius: 50%;
+      font-weight: 700;
+      line-height: 32px;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    .step-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .footer a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    @media (max-width: 640px) {
+      nav { flex-direction: column; gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">
+      <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 4 L36 12 L44 14 L38 20 L40 28 L32 32 L24 28 L26 20 L20 14 L28 12 Z" fill="url(#paint0_linear)" stroke="url(#paint1_linear)" stroke-width="1.5"/>
+        <rect x="6" y="8" width="20" height="28" rx="2" transform="rotate(-15 6 8)" stroke="url(#paint2_linear)" stroke-width="1.5"/>
+        <defs>
+          <linearGradient id="paint0_linear" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#06b6d4"/>
+          </linearGradient>
+          <linearGradient id="paint1_linear" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#06b6d4"/>
+          </linearGradient>
+          <linearGradient id="paint2_linear" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#06b6d4"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="logo-text">PageVolt</span>
+    </div>
+    <a href="founder.html">Meet the Founder ↗</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="shield-pulse"></div>
+    <div class="launch-chip">🚀 Launching before October 24th</div>
+    <h1 class="hero-title">
+      Turn Any Text into a <span class="gradient-text">Viral LinkedIn Carousel</span> PDF in 5 Seconds
+    </h1>
+    <p class="hero-subtitle">
+      Stop wasting hours on Canva. Paste your raw thoughts, choose an aesthetic template, and download a perfectly formatted,
+      mobile-optimized multi-page PDF document instantly. Built by a 13-year-old indie hacker.
+    </p>
+  </section>
+
+  <!-- Waitlist Form -->
+  <section>
+    <div class="waitlist-card">
+      <iframe src="https://tally.so/embed/wAyKXP" frameborder="0" allowfullscreen></iframe>
+      <div class="social-proof">
+        <span class="green-dot"></span> 🔥 24 builders joined in the last 48 hours
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-grid">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <h3 class="step-title">Paste Your Thoughts</h3>
+      <p class="step-desc">Drop any raw text, article, or idea. We handle the rest.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <h3 class="step-title">Volt AI Slicing</h3>
+      <p class="step-desc">Our smart engine slices and formats your content into perfect slides.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <h3 class="step-title">Download Native PDF</h3>
+      <p class="step-desc">Export a mobile-optimized PDF ready for LinkedIn, Instagram, and beyond.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 PageVolt. All rights reserved. | <a href="founder.html">Meet the Founder</a></p>
+  </footer>
+</body>
+        </html>
