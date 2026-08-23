@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PageVolt — Founder Story</title>
+  <style>
+    :root {
+      --bg: #030712;
+      --violet: #8b5cf6;
+      --cyan: #06b6d4;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --card: rgba(17, 24, 42, 0.75);
+      --border: rgba(139, 92, 246, 0.3);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      backdrop-filter: blur(10px);
+      background: rgba(3, 7, 18, 0.6);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .back-btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+    .avatar-container {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      border: 3px solid;
+      border-image: linear-gradient(90deg, var(--violet), var(--cyan)) 1;
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: rotate-border 6s linear infinite;
+    }
+    @keyframes rotate-border {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .avatar-inner {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, var(--violet), var(--cyan));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+    .main-header {
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+    .story-body {
+      max-width: 720px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .story-body strong {
+      color: var(--cyan);
+    }
+    .cta-button {
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+      transition: transform 0.2s ease;
+    }
+    .cta-button:hover {
+      transform: scale(1.05);
+    }
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .footer a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">
+      <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 4 L36 12 L44 14 L38 20 L40 28 L32 32 L24 28 L26 20 L20 14 L28 12 Z" fill="url(#paint0_linear)" stroke="url(#paint1_linear)" stroke-width="1.5"/>
+        <rect x="6" y="8" width="20" height="28" rx="2" transform="rotate(-15 6 8)" stroke="url(#paint2_linear)" stroke-width="1.5"/>
+        <defs>
+          <linearGradient id="paint0_linear" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#06b6d4"/>
+          </linearGradient>
+          <linearGradient id="paint1_linear" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#06b6d4"/>
+          </linearGradient>
+          <linearGradient id="paint2_linear" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#06b6d4"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="logo-text">PageVolt</span>
+    </div>
+    <a href="index.html" class="back-btn">← Back to Waitlist</a>
+  </nav>
+
+  <!-- Avatar -->
+  <div class="avatar-container">
+    <div class="avatar-inner">PV</div>
+  </div>
+
+  <!-- Headers -->
+  <h1 class="main-header">Building the Future of Content Automation at 13</h1>
+  <p class="subtitle">The Story Behind PageVolt — Written by the Founder</p>
+
+  <!-- Story -->
+  <div class="story-body">
+    Hi, I'm a 13-year-old developer from India. My 14th birthday is on <strong>October 24th, 2026</strong>. My personal mission is to completely build, code, and launch a working software product before that exact date.<br><br>
+
+    I don't have a laptop or computer yet, so I am vibe coding the entirety of PageVolt using Google IDX and a free Gemini API directly inside the Chrome browser of my Android tablet. I noticed how busy creators and founders waste hours on Canva trying to format carousels for LinkedIn, Instagram, and YouTube. PageVolt is my solution to automate that entire layout chore in seconds so you can spend your time building instead.<br><br>
+
+    I am doing web design services on the side to fund my first MacBook, but my main focus is launching this app. I'm building this entirely in public. If you want to follow my daily updates, code fixes, and startup journey, connect with me!
+  </div>
+
+  <!-- Call to Action -->
+  <a href="#" class="cta-button">Follow My Journey on LinkedIn ↗</a>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 PageVolt. | <a href="index.html">Back to Waitlist</a></p>
+  </footer>
+</body>
+</html>
