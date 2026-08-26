@@ -1,298 +1,349 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PageVolt — Waitlist</title>
-  <style>
-    :root {
-      --bg: #030712;
-      --violet: #8b5cf6;
-      --cyan: #06b6d4;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --card: rgba(17, 24, 42, 0.75);
-      --border: rgba(139, 92, 246, 0.3);
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      backdrop-filter: blur(10px);
-      background: rgba(3, 7, 18, 0.6);
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--violet), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -0.5px;
-    }
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.95rem;
-      position: relative;
-    }
-    nav a::after {
-      content: "";
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--violet), var(--cyan));
-      transition: width 0.3s ease;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
-    .hero {
-      text-align: center;
-      padding: 5rem 1.5rem 3rem;
-      position: relative;
-    }
-    .shield-pulse {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 2rem;
-      background: radial-gradient(circle at 30% 30%, var(--cyan), transparent 70%);
-      border-radius: 50%;
-      animation: pulse 3s infinite ease-in-out;
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
-    }
-    @keyframes pulse {
-      0% { transform: scale(0.9); opacity: 0.7; }
-      50% { transform: scale(1.1); opacity: 0.9; }
-      100% { transform: scale(0.9); opacity: 0.7; }
-    }
-    .launch-chip {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--border);
-      border-radius: 2rem;
-      font-size: 0.85rem;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-      animation: bounce 3s infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-    .hero-title {
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    .gradient-text {
-      background: linear-gradient(90deg, var(--violet), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fade 4s infinite linear;
-    }
-    @keyframes fade {
-      0% { opacity: 1; }
-      50% { opacity: 0.7; }
-      100% { opacity: 1; }
-    }
-    .hero-subtitle {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 720px;
-      margin: 0 auto 2rem;
-      line-height: 1.6;
-    }
-    .waitlist-card {
-      max-width: 480px;
-      margin: 0 auto 3rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
-      backdrop-filter: blur(10px);
-    }
-    .waitlist-card iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: 0.5rem;
-    }
-    .social-proof {
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-top: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .green-dot {
-      width: 10px;
-      height: 10px;
-      background: #22c55e;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #22c55e;
-      animation: blink 1.5s infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      padding: 0 1.5rem 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .step-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .step-card:hover {
-      transform: translateY(-8px);
-    }
-    .step-number {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(90deg, var(--violet), var(--cyan));
-      border-radius: 50%;
-      font-weight: 700;
-      line-height: 32px;
-      margin-bottom: 1rem;
-      color: white;
-    }
-    .step-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-    .step-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .footer {
-      text-align: center;
-      padding: 1.5rem;
-      border-top: 1px solid var(--border);
-      margin-top: auto;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .footer a {
-      color: var(--cyan);
-      text-decoration: none;
-    }
-    @media (max-width: 640px) {
-      nav { flex-direction: column; gap: 0.75rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageVolt | Premium SaaS Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --oled-black: #000000;
+            --obsidian-canvas: #09090b;
+            --neon-cyan: #06b6d4;
+            --deep-violet: #8b5cf6;
+            --glass-white: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+        
+        body {
+            background-color: var(--oled-black);
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--neon-cyan);
+            overflow-x: hidden;
+        }
+
+        /* Sticky Glass Navigation */
+        .glass-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--glass-white);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        /* Hero Explosion Area */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .micro-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            background: rgba(9, 9, 11, 0.7);
+            border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 10px var(--neon-cyan);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--neon-cyan), var(--deep-violet), var(--neon-cyan));
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Carousel Preview Simulator */
+        .carousel-mockup {
+            perspective: 1000px;
+            margin: 2rem 0;
+        }
+
+        .carousel-inner {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .arrow-button {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .arrow-button:hover {
+            scale: 1.1;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: var(--obsidian-canvas);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Waitlist Panel */
+        .waitlist-panel {
+            background: var(--obsidian-canvas);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background: linear-gradient(90deg, var(--neon-cyan), var(--deep-violet));
+            color: var(--oled-black);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .cta-button:hover {
+            scale: 1.05;
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+        }
+
+        /* Social Proof Pulse */
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #22c55e;
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+        }
+    </style>
 </head>
-<body>
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">
-      <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M32 4 L36 12 L44 14 L38 20 L40 28 L32 32 L24 28 L26 20 L20 14 L28 12 Z" fill="url(#paint0_linear)" stroke="url(#paint1_linear)" stroke-width="1.5"/>
-        <rect x="6" y="8" width="20" height="28" rx="2" transform="rotate(-15 6 8)" stroke="url(#paint2_linear)" stroke-width="1.5"/>
-        <defs>
-          <linearGradient id="paint0_linear" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#8b5cf6"/>
-            <stop offset="100%" stop-color="#06b6d4"/>
-          </linearGradient>
-          <linearGradient id="paint1_linear" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#8b5cf6"/>
-            <stop offset="100%" stop-color="#06b6d4"/>
-          </linearGradient>
-          <linearGradient id="paint2_linear" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#8b5cf6"/>
-            <stop offset="100%" stop-color="#06b6d4"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <span class="logo-text">PageVolt</span>
-    </div>
-    <a href="founder.html">Meet the Founder ↗</a>
-  </nav>
+<body class="bg-[#000000] text-[#06b6d4] font-sans">
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="shield-pulse"></div>
-    <div class="launch-chip">🚀 Launching before October 24th</div>
-    <h1 class="hero-title">
-      Turn Any Text into a <span class="gradient-text">Viral LinkedIn Carousel</span> PDF in 5 Seconds
-    </h1>
-    <p class="hero-subtitle">
-      Stop wasting hours on Canva. Paste your raw thoughts, choose an aesthetic template, and download a perfectly formatted,
-      mobile-optimized multi-page PDF document instantly. Built by a 13-year-old indie hacker.
-    </p>
-  </section>
+    <!-- Header & Glass Navigation -->
+    <header class="glass-nav fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- Inline SVG Lightning Bolt Slicing Through Slides -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L17 8H11L13 2Z" fill="#06b6d4"/>
+                    <path d="M6 18L10 12H6L8 18H6Z" fill="#8b5cf6"/>
+                    <rect x="4" y="4" width="16" height="16" rx="2" stroke="#06b6d4" stroke-width="1"/>
+                    <path d="M12 4V20" stroke="#ffffff20" stroke-width="1"/>
+                </svg>
+                <span class="text-2xl font-bold tracking-tight">PageVolt</span>
+            </div>
+            <a href="Founder.html" class="text-sm font-medium hover:text-white transition-colors">Meet the Founder ↗</a>
+        </div>
+    </header>
 
-  <!-- Waitlist Form -->
-  <section>
-    <div class="waitlist-card">
-      <iframe data-tally-src="https://tally.so/embed/XxP5Mz?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="120" frameborder="0" marginheight="0" marginwidth="0" title="PageVolt waitlist"></iframe>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
-      <div class="social-proof">
-        <span class="green-dot"></span> 🔥 24 builders joined in the last 48 hours
-      </div>
-    </div>
-  </section>
+    <!-- Hero Explosion Area -->
+    <section class="hero-section pt-20">
+        <!-- Micro-Badge -->
+        <div class="micro-badge mb-8">
+            <span class="w-2 h-2 bg-[#06b6d4] rounded-full animate-pulse"></span>
+            <span class="text-xs font-medium">⚡ The 13-Year-Old Founder Project • Launching before Oct 24th</span>
+        </div>
 
-  <!-- How It Works -->
-  <section class="how-grid">
-    <div class="step-card">
-      <div class="step-number">1</div>
-      <h3 class="step-title">Paste Your Thoughts</h3>
-      <p class="step-desc">Drop any raw text, article, or idea. We handle the rest.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-number">2</div>
-      <h3 class="step-title">Volt AI Slicing</h3>
-      <p class="step-desc">Our smart engine slices and formats your content into perfect slides.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-number">3</div>
-      <h3 class="step-title">Download Native PDF</h3>
-      <p class="step-desc">Export a mobile-optimized PDF ready for LinkedIn, Instagram, and beyond.</p>
-    </div>
-  </section>
+        <!-- Main Editorial Title -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 hero-title">
+            Turn Raw Drafts into <span class="gradient-text">Cinematic LinkedIn Carousels</span> in 5 Seconds.
+        </h1>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2026 PageVolt. All rights reserved. | <a href="founder.html">Meet the Founder</a></p>
-  </footer>
+        <!-- Subheadline -->
+        <p class="text-lg md:text-xl text-center max-w-2xl mb-8 text-gray-400">
+            Stop wrestling with rigid Canva layers. Paste your raw, chaotic scripts, choose an elite style system, and export pixel-perfect, mobile-optimized multi-page document PDFs instantly.
+        </p>
+
+        <!-- Early Access Bonus Banner -->
+        <div class="bg-[#8b5cf6]/20 border border-[#8b5cf6] rounded-lg px-6 py-3 mb-8">
+            <p class="text-center font-medium">🎁 EARLY ACCESS BONUS: The first 100 builders to lock in their spot secure a LIFETIME 50% DISCOUNT on any production tier forever.</p>
+        </div>
+
+        <!-- Primary CTA Button -->
+        <a href="#waitlist-section" class="cta-button inline-block">
+            Secure Early Access Token ↓
+        </a>
+    </section>
+
+    <!-- Carousel Preview Simulator -->
+    <section class="py-16 px-6">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-center mb-8">See PageVolt in Action</h2>
+            
+            <div class="carousel-mockup relative">
+                <div class="relative bg-[#09090b] border border-[#ffffff20] rounded-xl overflow-hidden shadow-xl">
+                    <!-- Mock LinkedIn Slide Preview -->
+                    <div class="p-6 space-y-4">
+                        <div class="bg-[#1a1a1d] rounded-lg p-4 border-l-4 border-[#06b6d4]">
+                            <h3 class="font-semibold mb-2">💡 Key Insight #1</h3>
+                            <p class="text-sm text-gray-300">Raw draft text gets automatically parsed into clear, structured content blocks ready for professional presentation.</p>
+                        </div>
+                        
+                        <div class="bg-[#1a1a1d] rounded-lg p-4 border-l-4 border-[#8b5cf6]">
+                            <h3 class="font-semibold mb-2">⚡ Smart Formatting</h3>
+                            <p class="text-sm text-gray-300">Each paragraph intelligently splits across multiple slides ensuring optimal readability on mobile devices.</p>
+                        </div>
+                        
+                        <div class="bg-[#1a1a1d] rounded-lg p-4 border-l-4 border-[#06b6d4]">
+                            <h3 class="font-semibold mb-2">📱 Native Export</h3>
+                            <p class="text-sm text-gray-300">Download clean PDFs preserving exact typography for seamless sharing across LinkedIn, Instagram, and YouTube.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Interactive Arrows -->
+                    <button class="absolute left-2 top-1/2 -translate-y-1/2 arrow-button bg-[#06b6d4]/20 hover:bg-[#06b6d4]/40 text-white p-2 rounded-full">
+                        ◀
+                    </button>
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 arrow-button bg-[#06b6d4]/20 hover:bg-[#06b6d4]/40 text-white p-2 rounded-full">
+                        ▶
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deeper Intelligence Product Reveal Hub -->
+    <section class="py-16 px-6 bg-[#09090b]">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl font-bold text-center mb-12">Behind The Volt Engine</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <h3 class="text-xl font-bold mb-4 text-white">The Volt Slicing Engine</h3>
+                    <p class="text-sm text-gray-400">
+                        Our backend intelligently parses long-form articles, links, or raw thoughts into structured multi-card layout arrays ready for premium design output.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <h3 class="text-xl font-bold mb-4 text-white">Platform UI Safe-Zones</h3>
+                    <p class="text-sm text-gray-400">
+                        Absolute position tracking layers guarantee that text overlays never get clipped by native smartphone buttons, notches, or status bars during export.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <h3 class="text-xl font-bold mb-4 text-white">One-Click Native PDF Pipelines</h3>
+                    <p class="text-sm text-gray-400">
+                        Export ultra-clean documents preserving exact typography and spacing data so your carousels look flawless on every professional business profile post.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Panel -->
+    <section id="waitlist-section" class="py-16 px-6">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-2 text-white">Claim Your Placement Identity Token</h2>
+            <p class="text-sm text-gray-400 mb-8">Create your startup identity to lock in your lifetime 50% discount verification status.</p>
+            
+            <div class="waitlist-panel">
+                <!-- Tally Iframe -->
+                <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden mb-6">
+                    <iframe 
+                        src="https://tally.so/embed/wAyKXP" 
+                        width="100%" 
+                        height="500" 
+                        frameborder="0" 
+                        loading="lazy"
+                        title="PageVolt Waitlist Signup"
+                    ></iframe>
+                </div>
+                
+                <!-- Dynamic Social Proof -->
+                <div class="flex items-center justify-center gap-2 text-sm text-gray-400">
+                    <span class="pulse-dot"></span>
+                    <span>🔥 24 builders joined in the last 48 hours. Remaining discount keys left: 76/100.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Preview Footer -->
+    <footer class="py-12 px-6 border-t border-[#ffffff20]">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="font-bold text-white mb-2">Legal</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Terms of Use</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Cookie Settings</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-2">Resources</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Community Forum</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Status Page</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-2">Company</h3>
+                    <ul class="space-y-1">
+                        <li><a href="Founder.html" class="text-sm text-gray-400 hover:text-white transition-colors">About / Founder Story</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Press Kit</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="text-xs text-gray-500">
+                © 2026 PageVolt — Built by a 13-Year-Old Indie Hacker from India.
+            </p>
+        </div>
+    </footer>
+
 </body>
-        </html>
+</html>
+```
