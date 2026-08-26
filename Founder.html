@@ -3,236 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PageVolt | Founder Story</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>PageVolt — Meet the Founder</title>
+    <script src="https://tailwindcss.com"></script>
+    <link href="https://cloudflare.com" rel="stylesheet">
     <style>
-        :root {
-            --oled-black: #000000;
-            --obsidian-card: #09090b;
-            --border-subtle: #1f2937;
-            --neon-cyan: #06b6d4;
-            --deep-violet: #8b5cf6;
-            --glass-bg: rgba(9, 9, 11, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
+        /* Premium Alpha Vignette Edge Fusion */
+        .ambient-blend {
+            mask-image: radial-gradient(circle, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);
         }
-        
-        body {
-            background-color: var(--oled-black);
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--neon-cyan);
-            overflow-x: hidden;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        /* Glass Navigation */
-        .glass-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        /* Gradient Text Effect */
-        .gradient-text {
-            background: linear-gradient(90deg, var(--neon-cyan), var(--deep-violet), var(--neon-cyan));
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
-            animation: gradient-shift 3s ease infinite;
-        }
-
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        /* Image Container with Edge Blending */
-        .image-container {
-            max-width: 24rem;
-            position: relative;
-            overflow: hidden;
-            border-radius: 1.5rem;
-            border: 1px solid var(--border-subtle);
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            /* Ambient Edge Blend via Radial Mask */
-            mask-image: radial-gradient(ellipse at bottom, black 70%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse at bottom, black 70%, transparent 100%);
-        }
-
-        /* Ambient Overlay for Vignette Effect */
-        .image-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40%;
-            background: linear-gradient(to top, var(--oled-black) 0%, transparent 100%);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        /* Editorial Typography */
-        .editorial-header {
-            font-size: 2.5rem;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-        }
-
-        .story-text {
-            font-size: 1.125rem;
-            line-height: 1.7;
-            letter-spacing: 0.01em;
-            color: #9ca3af;
-        }
-
-        /* Interactive CTA Button */
-        .cta-button {
-            background: linear-gradient(90deg, var(--neon-cyan), var(--deep-violet));
-            color: var(--oled-black);
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.125rem;
-            font-weight: 700;
-            border-radius: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 20px rgba(107, 114, 128, 0.3);
-        }
-
-        .cta-button:hover {
-            scale: 1.05;
-            box-shadow: 0 6px 25px rgba(139, 92, 246, 0.5);
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .editorial-header {
-                font-size: 2rem;
-            }
-            
-            .image-container {
-                max-width: 100%;
-            }
+        .animate-fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
     </style>
 </head>
-<body class="bg-[#000000] text-[#06b6d4] font-sans">
+<body class="bg-[#000000] text-gray-100 min-h-screen font-sans">
 
-    <!-- Glass Navigation Bar -->
-    <header class="glass-nav fixed w-full top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <!-- Inline SVG Lightning-Bolt Emblem -->
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13 2L17 8H11L13 2Z" fill="#06b6d4"/>
-                    <path d="M6 18L10 12H6L8 18H6Z" fill="#8b5cf6"/>
-                    <rect x="4" y="4" width="16" height="16" rx="2" stroke="#06b6d4" stroke-width="1"/>
-                    <path d="M12 4V20" stroke="#ffffff20" stroke-width="1"/>
-                </svg>
-                <span class="text-2xl font-bold tracking-tight">PageVolt</span>
-            </div>
-            <a href="index.html" class="text-sm font-medium hover:text-white transition-colors">← Back to Waitlist</a>
+    <!-- Navigation Bar -->
+    <nav class="border-b border-gray-900 bg-[#09090B]/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">PageVolt</span>
         </div>
-    </header>
+        <a href="index.html" class="px-4 py-2 rounded-lg bg-gray-900 hover:bg-gray-800 text-sm font-semibold border border-gray-800 transition duration-300">← Back to Waitlist</a>
+    </nav>
 
-    <!-- Biography Section -->
-    <main class="pt-24 pb-16 px-6">
-        <div class="max-w-5xl mx-auto">
-            <!-- Two-Column Grid Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                
-                <!-- Left Column (Profile & Photo) -->
-                <div class="flex flex-col items-center md:items-start">
-                    <!-- Image Container -->
-                    <div class="image-container">
-                        <img src="https://via.placeholder.com/400x500.png" alt="Founder Photo">
-                        <div class="image-overlay"></div>
-                    </div>
-                    
-                    <!-- Profile Details Card -->
-                    <div class="mt-8 w-full bg-[#09090b] border border-[#1f2937] rounded-xl p-6 text-center md:text-left">
-                        <h2 class="text-2xl font-bold text-white mb-2">Gabriel Kevin Y.</h2>
-                        <p class="text-[#06b6d4] font-medium tracking-wider mb-4">FOUNDER, PAGEVOLT</p>
-                        <span class="inline-block bg-[#1f2937] text-[#06b6d4] text-xs font-medium px-3 py-1 rounded-full">🚀 Age 13 • Building in Public</span>
-                    </div>
+    <!-- Main Content Grid -->
+    <main class="max-w-5xl mx-auto px-6 py-12 md:py-20 animate-fade-in">
+        <!-- Flex-col on mobile (photo top), md:grid on desktop (photo left) -->
+        <div class="flex flex-col md:grid md:grid-cols-3 gap-12 items-center">
+            
+            <!-- LEFT SIDE (Desktop) / TOP (Mobile): Ambient Blended Headshot -->
+            <div class="w-full md:col-span-1 flex flex-col items-center text-center relative group">
+                <div class="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-full blur opacity-20 group-hover:opacity-35 transition duration-500"></div>
+                <div class="relative w-64 h-64 md:w-72 md:h-72 mb-6 flex-shrink-0">
+                    <!-- Your verified direct upscaled link is hardcoded right here -->
+                    <img src="https://ibb.co" alt="Gabriel Kevin" class="w-full h-full object-cover ambient-blend pointer-events-none">
+                    <!-- Linear fade to melt base into OLED black background -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent opacity-100 h-1/3 bottom-0"></div>
                 </div>
-
-                <!-- Right Column (Story Content) -->
-                <div class="flex flex-col justify-center">
-                    <h1 class="editorial-header font-bold mb-8 text-white">
-                        Building the Future of Content Automation at 13.
-                    </h1>
-                    
-                    <div class="story-text space-y-6">
-                        <p>
-                            Hi, I'm a 13-year-old developer from India. My 14th birthday is on October 24th, 2026. My personal mission is to completely build, code, and launch a working software product before that exact date.
-                        </p>
-                        
-                        <p>
-                            I don't have a laptop or computer yet. I noticed how busy creators and founders waste hours on Canva trying to format carousels for LinkedIn, Instagram, and YouTube. PageVolt is my solution to automate that entire layout chore in seconds so you can spend your time building instead.
-                        </p>
-                        
-                        <p>
-                            I am doing web design services on the side to fund my first MacBook, but my main focus is launching this app. I'm building this entirely in public. If you want to follow my daily updates, code fixes, and startup journey, connect with me!
-                        </p>
-                    </div>
-
-                    <!-- Interactive CTA -->
-                    <div class="mt-12 text-center md:text-left">
-                        <a href="https://www.linkedin.com/in/gabrielkevin" class="cta-button inline-block">
-                            Connect with Me on LinkedIn ↗
-                        </a>
-                    </div>
-                </div>
-                
+                <h2 class="text-2xl font-extrabold text-white tracking-tight">Gabriel Kevin</h2>
+                <p class="text-sm text-cyan-400 mt-1 font-bold uppercase tracking-widest">Founder, PageVolt</p>
+                <div class="mt-4 px-4 py-1.5 bg-violet-950/30 rounded-full border border-violet-800/40 text-xs font-semibold text-violet-300 shadow-lg">🚀 Age 13 • Building in Public</div>
             </div>
+
+            <!-- RIGHT SIDE (Desktop) / BOTTOM (Mobile): Biography Details -->
+            <div class="w-full md:col-span-2 bg-[#09090B] border border-gray-900 rounded-2xl p-8 shadow-2xl">
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+                    Building the Future of Content Automation at 13
+                </h1>
+                
+                <div class="space-y-6 text-gray-400 leading-relaxed text-base md:text-lg">
+                    <p>Hi, I'm a 13-year-old developer from India and one of the youngest ai startup founders in the world. My 14th birthday is on October 24th, 2026. My personal mission is to completely build, code, and launch a working software product before that exact date.</p>
+                    <p>I don't have a laptop or computer yet, so I am vibe coding the entirety of PageVolt using laguna and a Gemini API directly inside the Chrome browser of my Android tablet. I noticed how busy creators and founders waste hours on Canva trying to format carousels for LinkedIn, Instagram, and YouTube. PageVolt is my solution to automate that entire layout chore in seconds so you can spend your time building instead.</p>
+                    <p>I am doing web design services on the side to fund my first MacBook, but my main focus is launching this app. I'm building this entirely in public. If you want to follow my daily updates, code fixes, and startup journey, connect with me below!</p>
+                </div>
+
+                <!-- Interactive Call To Action Button -->
+                <div class="mt-8 pt-6 border-t border-gray-900">
+                    <a href="https://linkedin.com" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white font-bold transition-all duration-300 transform active:scale-95 shadow-lg shadow-cyan-500/20">
+                        <i class="fab fa-linkedin mr-3 text-xl"></i> Connect on LinkedIn ↗
+                    </a>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <!-- System Footer -->
-    <footer class="py-12 px-6 border-t border-[#1f2937]">
-        <div class="max-w-5xl mx-auto text-center">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <h3 class="font-bold text-white mb-2">Legal</h3>
-                    <ul class="space-y-1">
-                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Terms of Use</a></li>
-                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Cookie Settings</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold text-white mb-2">Resources</h3>
-                    <ul class="space-y-1">
-                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Documentation</a></li>
-                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Community Forum</a></li>
-                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Status Page</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold text-white mb-2">Company</h3>
-                    <ul class="space-y-1">
-                        <li><a href="index.html" class="text-sm text-gray-400 hover:text-white transition-colors">Back to Waitlist</a></li>
-                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Careers</a></li>
-                        <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Press Kit</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <p class="text-xs text-gray-500">
-                © 2026 PageVolt — Built by a 13-Year-Old young founder from India.
-            </p>
-        </div>
+    <!-- Simple Footer -->
+    <footer class="border-t border-gray-900 text-center py-6 text-sm text-gray-600 mt-12 bg-[#09090B]/50">
+        &copy; 2026 PageVolt. All rights reserved.
     </footer>
 
 </body>
 </html>
-```
